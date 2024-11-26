@@ -19,7 +19,7 @@ cloneownerdb = mongodb.cloneownerdb
 idclonebotdb = mongodb.idclonebotdb
 
 
-@Client.on_message(filters.command(["idclone"], prefixes=["."]))
+@Client.on_message(filters.command(["idclone"], prefixes=["."]) & filters.user(int(OWNER_ID)))
 async def clone_txt(client, message):
     if len(message.command) > 1:
         string_session = message.text.split("/idclone", 1)[1].strip()
@@ -93,7 +93,7 @@ async def clone_txt(client, message):
         except:
             return
 
-@Client.on_message(filters.command(["idcloned", "clonedid"], prefixes=[".", "/"]))
+@Client.on_message(filters.command(["idcloned", "clonedid"], prefixes=[".", "/"]) & filters.user(int(OWNER_ID)))
 async def list_cloned_sessions(client, message):
     try:
         cloned_bots = idclonebotdb.find()
@@ -119,7 +119,7 @@ async def list_cloned_sessions(client, message):
             return
 
 @Client.on_message(
-    filters.command(["delidclone", "delcloneid", "deleteidclone", "removeidclone"], prefixes=["."])
+    filters.command(["delidclone", "delcloneid", "deleteidclone", "removeidclone"], prefixes=["."]) & filters.user(int(OWNER_ID))
 )
 async def delete_cloned_session(client, message):
     try:
