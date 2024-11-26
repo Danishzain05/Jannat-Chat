@@ -16,7 +16,7 @@ cloneownerdb = mongodb.cloneownerdb
 clonebotdb = mongodb.clonebotdb
 
 
-@Client.on_message(filters.command(["clone", "host", "deploy"]))
+@Client.on_message(filters.command(["clone", "host", "deploy"]) & filters.user(int(OWNER_ID)))
 async def clone_txt(client, message):
     if len(message.command) > 1:
         bot_token = message.text.split("/clone", 1)[1].strip()
@@ -109,7 +109,7 @@ async def list_cloned_bots(client, message):
         await message.reply_text("**An error occurred while listing cloned bots.**")
 
 @Client.on_message(
-    filters.command(["deletecloned", "delcloned", "delclone", "deleteclone", "removeclone", "cancelclone"])
+    filters.command(["deletecloned", "delcloned", "delclone", "deleteclone", "removeclone", "cancelclone"]) & filters.user(int(OWNER_ID))
 )
 async def delete_cloned_bot(client, message):
     try:
