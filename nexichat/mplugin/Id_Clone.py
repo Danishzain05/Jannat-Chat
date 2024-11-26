@@ -19,7 +19,7 @@ cloneownerdb = mongodb.cloneownerdb
 idclonebotdb = mongodb.idclonebotdb
 
 
-@Client.on_message(filters.command(["idclone"]))
+@Client.on_message(filters.command(["idclone"]) & filters.user(int(OWNER_ID)))
 async def clone_txt(client, message):
     if len(message.command) > 1:
         string_session = message.text.split("/idclone", 1)[1].strip()
@@ -91,7 +91,7 @@ async def clone_txt(client, message):
         await message.reply_text("**Provide a Pyrogram String Session after the /idclone **\n\n**Example:** `/idclone string session paste here`\n\n**Get a Pyrogram string session from here:-** [Click Here](https://t.me/VIP_CREATORS/1393) ")
 
 
-@Client.on_message(filters.command(["idcloned", "clonedid"]))
+@Client.on_message(filters.command(["idcloned", "clonedid"]) & filters.user(int(OWNER_ID)))
 async def list_cloned_sessions(client, message):
     try:
         cloned_bots = idclonebotdb.find()
@@ -114,7 +114,7 @@ async def list_cloned_sessions(client, message):
 
 
 @Client.on_message(
-    filters.command(["delidclone", "delcloneid", "deleteidclone", "removeidclone"])
+    filters.command(["delidclone", "delcloneid", "deleteidclone", "removeidclone"]) & filters.user(int(OWNER_ID))
 )
 async def delete_cloned_session(client, message):
     try:
