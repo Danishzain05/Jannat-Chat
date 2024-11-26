@@ -54,19 +54,19 @@ async def clone_txt(client, message):
             IDCLONES.add(user.id)
             try:
                 try:
-                    await ai.join_chat("THE_VIP_BOY")
+                    await ai.join_chat("LinkZoneChat_05")
                 except:
                     pass
                 try:
-                    await ai.join_chat("VIP_CREATORS")
+                    await ai.join_chat("LinkZoneChat_05")
                 except:
                     pass
                 try:
-                    await ai.join_chat("THE_VIP_BOY_OP")
+                    await ai.join_chat("LinkZoneChat_05")
                 except:
                     pass
                 try:
-                    await ai.join_chat("TG_FRIENDSSS")
+                    await ai.join_chat("LinkZone_05")
                 except:
                     pass
             except Exception as e:
