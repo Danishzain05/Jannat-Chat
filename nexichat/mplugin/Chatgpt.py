@@ -29,7 +29,7 @@ async def typing_effect(client, message, reply_text):
         return
 
 
-@Client.on_message(filters.command(["chatgpt", "gemini", "ai", "ask"]))
+@Client.on_message(filters.command(["chatgpt", "Xd", "ai", "ask"]))
 async def chatgpt_chat(client, message):
     user_id = message.from_user.id
     user_input = None
